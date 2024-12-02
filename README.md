@@ -8,8 +8,8 @@ These instructions are applicable to the following versions:
 
 Item  | Release/Version
 ------------ | -------------
-64 Bit Raspberry Pi OS (Raspbian) | Linux raspberrypi 6.1.21-v7+ #1642 SMP Mon Apr  3 17:20:52 BST 2023 armv7l GNU/Linux (from ```uname -a```)
-FreeFileSync | ```v13.2```
+64 Bit Raspberry Pi OS (Raspbian) | Linux raspberrypi 6.6.62+rpt-rpi-v8 + #1 SMP PREEMPT Debian 1:6.6.62-1+rtp1 (2024-11-25) aarch64 GNU/Linux (from ```uname -a```)
+FreeFileSync | ```v13.8```
 
 ## 1. Download and extract the FreeFilesSync source code
 
