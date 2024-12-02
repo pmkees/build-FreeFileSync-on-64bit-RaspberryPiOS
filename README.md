@@ -29,14 +29,14 @@ https://freefilesync.org/forum/viewtopic.php?t=7660#p26057
 
 The following dependencies need to be installed to compile:
 - libgtk-3-dev (will pull in many, many other dependencies)
-- libxtst-dev
+- libpsl-dev
 - libssh2-1-dev
 
 ```
 sudo apt-get update
-sudo apt-get install libgtk-3-dev 
-sudo apt-get install libxtst-dev
-sudo apt-get install libssh2-1-dev
+sudo apt install libgtk-3-dev 
+sudo apt install psl-dev
+sudo apt install libssh2-1-dev
 ```
 
 ## 3. Compile dependencies not available via apt-get
