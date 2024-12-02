@@ -5,7 +5,7 @@ These instruction capture the necessary steps for installing the various depende
 This specific set of instructions was cloned from [subere](https://github.com/Subere/build-FreeFileSync-on-raspberry-pi), itself a fork that originated with jeffli
 
 ## Sources of information
-These instructions try to reference discussions on the FreeFileSync forums where applicable and the [debian patches](https://sources.debian.org/patches/freefilesync/) associated with the unofficial FreeFileSync Debian build.
+These instructions try to reference discussions on the FreeFileSync forums where applicable and the [debian patches](https://sources.debian.org/patches/freefilesync/) associated with the unofficial FreeFileSync Debian build. 
 
 These instructions are applicable to the following versions:
 
