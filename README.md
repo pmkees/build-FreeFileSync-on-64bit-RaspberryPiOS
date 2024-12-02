@@ -1,4 +1,4 @@
-# build-FreeFileSync-on-raspberry-pi
+# Build FreeFileSync on 64bit Raspberry Pi OS
 FreeFileSync is a great open source file synchronization tool.
 Building from source on linux is straightfoward *if* all the necessary dependencies are installed.
 These instruction capture the necessary steps for installing the various dependencies and compiling FreeFileSync on 64-bit Raspberry Pi OS.
