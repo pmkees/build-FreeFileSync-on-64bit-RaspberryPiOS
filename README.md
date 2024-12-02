@@ -4,6 +4,9 @@ Building from source on linux is straightfoward *if* all the necessary dependenc
 These instruction capture the necessary steps for installing the various dependencies and compiling FreeFileSync on 64-bit Raspberry Pi OS.
 This specific set of instructions was cloned from [subere](https://github.com/Subere/build-FreeFileSync-on-raspberry-pi), itself a fork that originated with jeffli
 
+## Sources of information
+These instructions try to reference discussions on the FreeFileSync forums where applicable and the [debian patches](https://sources.debian.org/patches/freefilesync/) associated with the unofficial FreeFileSync Debian build.
+
 These instructions are applicable to the following versions:
 
 Item  | Release/Version
@@ -106,7 +109,17 @@ change: cxxFlags  += -isystem/usr/include/gtk-2.0
 to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 ```
 
-### 4.3 Add workaround for glib weirndess
+### 4.3 Add workaround for libglibc weirndess
+
+     //the remaining icon types won't block!
+     assert(GDK_IS_PIXBUF(gicon) || G_IS_THEMED_ICON(gicon) || G_IS_EMBLEMED_ICON(gicon));
+ 
++#if (GLIB_CHECK_VERSION (2, 67, 0))
++    g_object_ref(gicon);                   //pass ownership
++#else
+     ::g_object_ref(gicon);                 //pass ownership
++#endif
+
 
 ### 4.4 [Optional] Populate Google client_id and client_key in Freefilesync/Source/afs/gdrive.cpp
 Information about Google Drive support on self-compiled instances was mentioned at https://freefilesync.org/forum/viewtopic.php?t=8171
