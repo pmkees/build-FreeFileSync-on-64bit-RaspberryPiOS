@@ -111,6 +111,15 @@ to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 
 ### 4.3 Add workaround for libglibc weirndess
 
+For reasons that are unclear, deep in a the libglibc library that is applying a change that shouldn't be applied.
+This change adds some explicit steps to keep the formatting correctly
+
+FreeFileSync Forum:
+
+Debian patch:
+https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
+
+
 Right after this section:
 ```
      //the remaining icon types won't block!
