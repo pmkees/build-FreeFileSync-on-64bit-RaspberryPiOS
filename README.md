@@ -111,15 +111,18 @@ to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 
 ### 4.3 Add workaround for libglibc weirndess
 
+Right after this section:
+```
      //the remaining icon types won't block!
      assert(GDK_IS_PIXBUF(gicon) || G_IS_THEMED_ICON(gicon) || G_IS_EMBLEMED_ICON(gicon));
- 
-+#if (GLIB_CHECK_VERSION (2, 67, 0))
-+    g_object_ref(gicon);                   //pass ownership
-+#else
+ ```
+Add the following:
+```#if (GLIB_CHECK_VERSION (2, 67, 0))
+    g_object_ref(gicon);                   //pass ownership
+#else
      ::g_object_ref(gicon);                 //pass ownership
-+#endif
-
+#endif
+```
 
 ### 4.4 [Optional] Populate Google client_id and client_key in Freefilesync/Source/afs/gdrive.cpp
 Information about Google Drive support on self-compiled instances was mentioned at https://freefilesync.org/forum/viewtopic.php?t=8171
