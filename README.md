@@ -116,8 +116,10 @@ Right after this section:
      //the remaining icon types won't block!
      assert(GDK_IS_PIXBUF(gicon) || G_IS_THEMED_ICON(gicon) || G_IS_EMBLEMED_ICON(gicon));
  ```
+
 Add the following:
-```#if (GLIB_CHECK_VERSION (2, 67, 0))
+```
+#if (GLIB_CHECK_VERSION (2, 67, 0))
     g_object_ref(gicon);                   //pass ownership
 #else
      ::g_object_ref(gicon);                 //pass ownership
