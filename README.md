@@ -36,13 +36,31 @@ The following dependencies need to be installed to compile:
 sudo apt-get update
 sudo apt install libgtk-3-dev 
 sudo apt install psl-dev
-sudo apt install libssh2-1-dev
 ```
 
 ## 3. Compile dependencies not available via apt-get
 
 The following dependencies could not be installed via `apt-get` and need to be compiled from their source code.
 
+### 3.2 libssh2
+The minimum libssh2 version (that provides the needed libcurl library) needed is 11
+
+Acquire, build and install with the following steps:
+```
+wget https://libssh2.org/download/libssh2-1.11.1.tar.gz
+tar xvf libssh2-1.11.1.tar.gz
+cd libssh2-1.11.1
+mkdir build
+cd build/
+../configure 
+make
+sudo make install
+```
+Perform additional step so that the newly created libcurl libraries get put into the appropriate place for 64-bit RaspberryPi OS
+```
+sudo cp /usr/local/lib/???? /usr/lib/aarch64-linux-gnu/
+sudo ldconfig
+```
 
 ### 3.3 libcurl
 Starting with FreeFileSync v13.8, the minimum curl version (that provides the needed libcurl library) needed is 8.8
@@ -155,7 +173,7 @@ Assuming the command completed without fatal errors, the binary should be waitin
 ## 6. Run FreeFileSync
 Go to the FreeFileSync/Build/Bin directory and enter:
 ```
-./FreeFileSync_xxx
+./FreeFileSync_aarch64
 ```
 
 # Troubleshooting & Known Issues
