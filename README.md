@@ -82,13 +82,12 @@ sudo ldconfig
 ```
 
 ### 3.3 wxWidgets
-Starting with FreeFileSync v13.2, the minimum version for WxWidgets is 3.2.3.
 
 Build instructions are:
 ```
-wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
-tar xvf wxWidgets-3.2.3.tar.bz2
-cd wxWidgets-3.2.3/
+wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.6/wxWidgets-3.2.6.tar.bz2
+tar xvf wxWidgets-3.2.6.tar.bz2
+cd wxWidgets-3.2.6/
 mkdir gtk-build
 cd gtk-build/
 ../configure --disable-shared --enable-unicode --enable-no_exceptions
@@ -154,7 +153,7 @@ With the following set of lines:
 #if (GLIB_CHECK_VERSION (2, 67, 0))
     g_object_ref(gicon);                   //pass ownership
 #else
-     ::g_object_ref(gicon);                 //pass ownership
+    ::g_object_ref(gicon);                 //pass ownership
 #endif
 ```
 
