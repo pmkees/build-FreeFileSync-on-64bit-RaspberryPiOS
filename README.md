@@ -5,7 +5,8 @@ These instruction capture the necessary steps for installing the various depende
 This specific set of instructions was cloned from [subere](https://github.com/Subere/build-FreeFileSync-on-raspberry-pi), itself a fork-of-a-fork (of a fork) that originated with [jeffli](https://github.com/jeffli678/build-FreeFileSync)
 
 ## Sources of information
-These instructions try to reference discussions on the FreeFileSync forums where applicable and the [debian patches](https://sources.debian.org/patches/freefilesync/) associated with the unofficial FreeFileSync Debian build. 
+These instructions try to reference discussions on the FreeFileSync forums where applicable and the [debian patches](https://sources.debian.org/patches/freefilesync/) associated with the unofficial FreeFileSync Debian build.
+If you frequent the FreeFileSync forms, you might see some familiar names mentioned in the debian patches (shoutout to bgstack15!) 
 
 These instructions are applicable to the following versions:
 
@@ -23,27 +24,25 @@ https://freefilesync.org/download/FreeFileSync_13.8_Source.zip
 Move the .zip file to the desired directory and uncompress
 ```unzip FreeFileSync_13.8_Source.zip```
 
-## 2. Install available dependencies via apt-get
+## 2. Install available dependencies via apt
 These instructions reflect building FreeFileSync using libgtk-3 but using libgtk-3 may lead to a non-optimal user experience- see:
 https://freefilesync.org/forum/viewtopic.php?t=7660#p26057
 
 The following dependencies need to be installed to compile:
 - libgtk-3-dev (will pull in many, many other dependencies)
 - libpsl-dev
-- libssh2-1-dev
-
 ```
-sudo apt-get update
+sudo apt update
 sudo apt install libgtk-3-dev 
 sudo apt install psl-dev
 ```
 
-## 3. Compile dependencies not available via apt-get
+## 3. Compile dependencies not available via apt
 
-The following dependencies could not be installed via `apt-get` and need to be compiled from their source code.
+The following dependencies could not be installed via `apt` and need to be compiled from their source code.
 
-### 3.2 libssh2
-The minimum libssh2 version (that provides the needed libcurl library) needed is 11
+### 3.1 libssh2
+The minimum libssh2 version (that provides the needed libcurl library) needed is 1.11
 
 Acquire, build and install with the following steps:
 ```
@@ -62,7 +61,7 @@ sudo cp /usr/local/lib/???? /usr/lib/aarch64-linux-gnu/
 sudo ldconfig
 ```
 
-### 3.3 libcurl
+### 3.2 libcurl
 Starting with FreeFileSync v13.8, the minimum curl version (that provides the needed libcurl library) needed is 8.8
 
 Acquire, build and install with the following steps:
@@ -82,7 +81,7 @@ sudo cp /usr/local/lib/libcurl.so.4.8.0 /usr/lib/aarch64-linux-gnu/
 sudo ldconfig
 ```
 
-### 3.4 wxWidgets
+### 3.3 wxWidgets
 Starting with FreeFileSync v13.2, the minimum version for WxWidgets is 3.2.3.
 
 Build instructions are:
@@ -127,12 +126,13 @@ change: cxxFlags  += -isystem/usr/include/gtk-2.0
 to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 ```
 
-### 4.3 Add workaround for libglibc weirndess
+### 4.3 Add workaround for libglibc weirndess in FreeFileSync/Source/base/icon_loader.cpp
 
-For reasons that are unclear, deep in a the libglibc library that is applying a change that shouldn't be applied.
-This change adds some explicit steps to keep the formatting correctly
+Deep in a the libglibc library, a macro is rewritting the line inappropriately resulting in a failed compilation.
+The libglibc fix will eventually be available and the compilation will occur without issue but until then, this workaround is needed.
 
 FreeFileSync Forum:
+https://freefilesync.org/forum/viewtopic.php?t=8780
 
 Debian patch:
 https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
@@ -146,7 +146,7 @@ Immediately after this section (around line XX)
 
 Replace this line:
 ```
-    g_object_ref(gicon);                   //pass ownership
+    ::g_object_ref(gicon);                   //pass ownership
 ```
 
 With the following set of lines:
@@ -176,14 +176,14 @@ Run ```make``` in the folder FreeFileSync/Source.
 Assuming the command completed without fatal errors, the binary should be waiting for you in FreeFileSync/Build/Bin. 
 
 ## 6. Run FreeFileSync
-Go to the FreeFileSync/Build/Bin directory and enter:
+Go to the FreeFileSync/Build/Bin directory and run by entering:
 ```
 ./FreeFileSync_aarch64
 ```
 
 # Troubleshooting & Known Issues
 
-##  Image used in 'About' diaglog is missing
+##  Image used in 'About' diaglog is missing generating an error dialog window
 When opening the 'About' dialog, a reference image file is missing. The lack of image generates an error but doesn't seem to have any other impact.
 The issue seems to have been reported at:
 https://freefilesync.org/forum/viewtopic.php?t=9444
