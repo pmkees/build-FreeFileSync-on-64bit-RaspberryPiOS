@@ -138,13 +138,18 @@ Debian patch:
 https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
 
 
-Right after this section:
+Immediately after this section (around line XX)
 ```
      //the remaining icon types won't block!
      assert(GDK_IS_PIXBUF(gicon) || G_IS_THEMED_ICON(gicon) || G_IS_EMBLEMED_ICON(gicon));
  ```
 
-Add the following:
+Replace this line:
+```
+    g_object_ref(gicon);                   //pass ownership
+```
+
+With the following set of lines:
 ```
 #if (GLIB_CHECK_VERSION (2, 67, 0))
     g_object_ref(gicon);                   //pass ownership
