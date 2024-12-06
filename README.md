@@ -42,7 +42,7 @@ sudo apt install psl-dev
 The following dependencies could not be installed via `apt` and need to be compiled from their source code.
 
 ### 3.1 libssh2
-The minimum libssh2 version (that provides the needed libcurl library) needed is 1.11
+The minimum libssh2 version needed is 1.11
 
 Acquire, build and install with the following steps:
 ```
