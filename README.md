@@ -90,13 +90,13 @@ tar xvf wxWidgets-3.2.6.tar.bz2
 cd wxWidgets-3.2.6/
 mkdir gtk-build
 cd gtk-build/
-../configure --disable-shared --enable-unicode --enable-no_exceptions
+../configure --disable-shared --enable-unicode
 make
 sudo make install
 ```
 The need to disable WxWidget exception handling (using the '--enable-no_exceptions' options) was mentioned with the introduction of FFSv13.2 in the forums at:
 https://freefilesync.org/forum/viewtopic.php?t=10794
-If exceptions are enable on wxWidgets, FreeFileSync code could be modified to remove the check or to throw a warning instead of an error.
+It appears that the use of "--enable-no_exceptions" generates other compilation errors and so FileSync code could be modified to remove the check or to throw a warning instead of an error.
 
 ## 4. Tweak FreeFileSync code
 
@@ -124,8 +124,16 @@ On line 22:
 change: cxxFlags  += -isystem/usr/include/gtk-2.0
 to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 ```
+### 4.3 Change exception check #error to only a #warning
 
-### 4.3 Add workaround for libglibc weirndess in FreeFileSync/Source/base/icon_loader.cpp
+```
+change: #error
+to:     #warning
+```
+
+This will allow compilation and execution - but logfiles used for troubleshooting may not be useful
+
+### 4.4 Add workaround for libglibc weirndess in FreeFileSync/Source/base/icon_loader.cpp
 
 Deep in a the libglibc library, a macro is rewritting the line inappropriately resulting in a failed compilation.
 The libglibc fix will eventually be available and the compilation will occur without issue but until then, this workaround is needed.
