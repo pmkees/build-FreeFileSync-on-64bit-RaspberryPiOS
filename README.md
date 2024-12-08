@@ -142,8 +142,8 @@ Deep within the libglibc library, a macro is rewritting the line inappropriately
 The libglibc fix will eventually be available but until then, this workaround is needed.
 
 #### References
-FreeFileSync Forum: https://freefilesync.org/forum/viewtopic.php?t=8780
-Debian patch: https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
+* FreeFileSync Forum: https://freefilesync.org/forum/viewtopic.php?t=8780
+* Debian patch: https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
 
 Replace this line (line 230)
 ```
