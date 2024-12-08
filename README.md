@@ -126,14 +126,15 @@ On line 22:
 change: cxxFlags  += -isystem/usr/include/gtk-2.0
 to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 ```
-### 4.3 Change exception check #error to only a #warning
+### 4.3 Update FreeFileSync/Source/application.cpp to change wxWidget exception check from #error to only a #warning
 
+On line 247:
 ```
-change: #error
-to:     #warning
+change: #error why is wxWidgets uncaught exception handling enabled!?
+to:     #warning why is wxWidgets uncaught exceptions handling enabled!?
 ```
 
-This will allow compilation and execution - but logfiles used for troubleshooting may not be useful
+This will allow compilation and execution - but any logfiles collected for troubleshooting may not be useful.
 
 ### 4.4 Add workaround for libglibc weirndess in FreeFileSync/Source/base/icon_loader.cpp
 
