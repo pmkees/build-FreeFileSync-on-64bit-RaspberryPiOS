@@ -138,14 +138,12 @@ This will allow compilation and execution - but any logfiles collected for troub
 
 ### 4.4 Add workaround for libglibc weirndess in FreeFileSync/Source/base/icon_loader.cpp
 
-Deep in a the libglibc library, a macro is rewritting the line inappropriately resulting in a failed compilation.
-The libglibc fix will eventually be available and the compilation will occur without issue but until then, this workaround is needed.
+Deep within the libglibc library, a macro is rewritting the line inappropriately resulting in a failed compilation.
+The libglibc fix will eventually be available but until then, this workaround is needed.
 
-FreeFileSync Forum:
-https://freefilesync.org/forum/viewtopic.php?t=8780
-
-Debian patch:
-https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
+#### References
+FreeFileSync Forum: https://freefilesync.org/forum/viewtopic.php?t=8780
+Debian patch: https://sources.debian.org/patches/freefilesync/12.0-2/ffs_icon_loader.patch/
 
 Replace this line (line 230)
 ```
