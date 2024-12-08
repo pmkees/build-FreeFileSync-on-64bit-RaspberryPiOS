@@ -17,12 +17,12 @@ FreeFileSync | ```v13.8```
 
 ## 1. Download and extract the FreeFilesSync source code
 
-As of this writing, the latest version of FreeFileSync is 13.8 and it can be downloaded from: 
+As of this writing, the latest version of FreeFileSync is 13.9 and it can be downloaded from: 
 
-https://freefilesync.org/download/FreeFileSync_13.8_Source.zip
+https://freefilesync.org/download/FreeFileSync_13.9_Source.zip
 
 Move the .zip file to the desired directory and uncompress
-```unzip FreeFileSync_13.8_Source.zip```
+```unzip FreeFileSync_13.9_Source.zip```
 
 ## 2. Install available dependencies via apt
 These instructions reflect building FreeFileSync using libgtk-3 but using libgtk-3 may lead to a non-optimal user experience- see:
@@ -30,11 +30,13 @@ https://freefilesync.org/forum/viewtopic.php?t=7660#p26057
 
 The following dependencies need to be installed to compile:
 - libgtk-3-dev (will pull in many, many other dependencies)
+- libssl-dev
 - libpsl-dev
 ```
 sudo apt update
 sudo apt install libgtk-3-dev 
-sudo apt install psl-dev
+sudo apt install libpsl-dev
+sudo apt install libssl-dev
 ```
 
 ## 3. Compile dependencies not available via apt
@@ -51,18 +53,18 @@ tar xvf libssh2-1.11.1.tar.gz
 cd libssh2-1.11.1
 mkdir build
 cd build/
-../configure 
+../configure
 make
 sudo make install
 ```
-Perform additional step so that the newly created libcurl libraries get put into the appropriate place for 64-bit RaspberryPi OS
+Perform additional step to move the newly created library and overwrite the existing version in the place 64-bit RaspberryPi OS uses
 ```
-sudo cp /usr/local/lib/???? /usr/lib/aarch64-linux-gnu/
+sudo cp /usr/local/lib/libssh2.so.1.0.1 /usr/lib/aarch64-linux-gnu/
 sudo ldconfig
 ```
 
 ### 3.2 libcurl
-Starting with FreeFileSync v13.8, the minimum curl version (that provides the needed libcurl library) needed is 8.8
+The minimum curl version (that provides the needed libcurl library) needed is 8.8
 
 Acquire, build and install with the following steps:
 ```
