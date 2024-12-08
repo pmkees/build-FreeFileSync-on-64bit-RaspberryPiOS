@@ -131,7 +131,7 @@ to:     cxxFlags  += -isystem/usr/include/gtk-3.0
 On line 247:
 ```
 change: #error why is wxWidgets uncaught exception handling enabled!?
-to:     #warning why is wxWidgets uncaught exceptions handling enabled!?
+to:     #warning why is wxWidgets uncaught exception handling enabled!?
 ```
 
 This will allow compilation and execution - but any logfiles collected for troubleshooting may not be useful.
