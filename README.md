@@ -13,7 +13,7 @@ These instructions are applicable to the following versions:
 Item  | Release/Version
 ------------ | -------------
 64 Bit Raspberry Pi OS (Raspbian) | Linux raspberrypi 6.6.62+rpt-rpi-v8 + #1 SMP PREEMPT Debian 1:6.6.62-1+rtp1 (2024-11-25) aarch64 GNU/Linux (from ```uname -a```)
-FreeFileSync | ```v13.8```
+FreeFileSync | ```v13.9```
 
 ## 1. Download and extract the FreeFilesSync source code
 
@@ -57,7 +57,7 @@ cd build/
 make
 sudo make install
 ```
-Perform additional step to move the newly created library and overwrite the existing version in the place 64-bit RaspberryPi OS uses
+Perform additional step to move the newly created library and overwrite the existing version used by 64-bit RaspberryPi OS.
 ```
 sudo cp /usr/local/lib/libssh2.so.1.0.1 /usr/lib/aarch64-linux-gnu/
 sudo ldconfig
@@ -77,7 +77,7 @@ cd build/
 make
 sudo make install
 ```
-Perform additional step so that the newly created libcurl libraries get put into the appropriate place for 64-bit RaspberryPi OS
+Perform additional step to move the newly created library and overwrite the existing version used by 64-bit RaspberryPi OS.
 ```
 sudo cp /usr/local/lib/libcurl.so.4.8.0 /usr/lib/aarch64-linux-gnu/
 sudo ldconfig
