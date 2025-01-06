@@ -35,8 +35,8 @@ The following dependencies need to be installed to compile:
 ```
 sudo apt update
 sudo apt install libgtk-3-dev 
-sudo apt install libpsl-dev
 sudo apt install libssl-dev
+sudo apt install libpsl-dev
 ```
 
 ## 3. Compile dependencies not available via apt
