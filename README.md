@@ -164,7 +164,7 @@ Information about Google Drive support on self-compiled instances was mentioned 
 
 To set up and use a google cloud location for syncing, your compiled version of Free File Sync needs to be registered with Google (you can't reuse the registration credentials of the official FreeFileSync release for a number of reasons perhaps most fundamentally, you could modify the code in any shape/way/form and no longer use it as the original author intended)
 
-The good news is that Google allows users to set up their own Google project with its own Client ID and Client Secret (free for personal testing/use). Once you get your own application registered, add the provided information in between the " " on lines 92 and 93:
+The good news is that Google allows users to set up their own Google project with its own Client ID and Client Secret (free for personal testing/use, see https://developers.google.com/identity/oauth2/web/guides/get-google-api-clientid ). Once you get your own application registered, add the provided information in between the " " on lines 92 and 93:
 ```
 std::string getGdriveClientId    () { return ""; } // => replace with live credentials
 std::string getGdriveClientSecret() { return ""; } //
